@@ -5,6 +5,7 @@ import {
   Stack,
   Tag,
   Text,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { Settings } from '@typebot.io/schemas'
 import React from 'react'
@@ -27,6 +28,7 @@ export const GeneralSettingsForm = ({
   generalSettings,
   onGeneralSettingsChange,
 }: Props) => {
+  const keyBg = useColorModeValue(undefined, 'gray.600')
   const toggleRememberUser = (isEnabled: boolean) =>
     onGeneralSettingsChange({
       ...generalSettings,
@@ -83,7 +85,7 @@ export const GeneralSettingsForm = ({
       />
       <SwitchWithRelatedSettings
         label={'Remember user'}
-        moreInfoContent="If enabled, user previous variables will be prefilled and his new answers will override the previous ones."
+        moreInfoContent="If enabled, the chat state will be restored if the user comes back after exiting."
         initialValue={
           generalSettings?.rememberUser?.isEnabled ??
           (isDefined(generalSettings?.isNewResultOnRefreshEnabled)
@@ -98,12 +100,19 @@ export const GeneralSettingsForm = ({
             <MoreInfoTooltip>
               <Stack>
                 <Text>
-                  Choose <Tag size="sm">session</Tag> to remember the user as
-                  long as he does not closes the tab or the browser.
+                  Choose{' '}
+                  <Tag size="sm" bgColor={keyBg}>
+                    session
+                  </Tag>{' '}
+                  to remember the user as long as he does not closes the tab or
+                  the browser.
                 </Text>
                 <Text>
-                  Choose <Tag size="sm">local</Tag> to remember the user
-                  forever.
+                  Choose{' '}
+                  <Tag size="sm" bgColor={keyBg}>
+                    local
+                  </Tag>{' '}
+                  to remember the user forever on the same device.
                 </Text>
               </Stack>
             </MoreInfoTooltip>

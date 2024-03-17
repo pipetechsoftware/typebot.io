@@ -128,8 +128,7 @@
                             ]
                           },
                           {
-                            "type": "object",
-                            "properties": {}
+                            "type": "object"
                           }
                         ]
                       }
@@ -506,46 +505,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -555,46 +515,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -717,8 +638,7 @@
                             ]
                           },
                           {
-                            "type": "object",
-                            "properties": {}
+                            "type": "object"
                           }
                         ]
                       }
@@ -1095,46 +1015,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -1144,46 +1025,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -1199,6 +1041,7 @@
           {
             "in": "path",
             "name": "publicId",
+            "description": "[Where to find my bot's public ID?](../how-to#how-to-find-my-publicid)",
             "schema": {
               "type": "string",
               "description": "[Where to find my bot's public ID?](../how-to#how-to-find-my-publicid)"
@@ -1535,6 +1378,10 @@
                         }
                       },
                       "description": "If the typebot contains dynamic avatars, dynamicTheme returns the new avatar URLs whenever their variables are updated."
+                    },
+                    "progress": {
+                      "type": "number",
+                      "description": "If progress bar is enabled, this field will return a number between 0 and 100 indicating the current progress based on the longest remaining path of the flow."
                     }
                   },
                   "required": [
@@ -1551,46 +1398,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -1600,46 +1408,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -1655,6 +1424,7 @@
           {
             "in": "path",
             "name": "sessionId",
+            "description": "The session ID you got from the [startChat](./start-chat) response.",
             "schema": {
               "type": "string",
               "description": "The session ID you got from the [startChat](./start-chat) response."
@@ -1941,6 +1711,10 @@
                         }
                       },
                       "description": "If the typebot contains dynamic avatars, dynamicTheme returns the new avatar URLs whenever their variables are updated."
+                    },
+                    "progress": {
+                      "type": "number",
+                      "description": "If progress bar is enabled, this field will return a number between 0 and 100 indicating the current progress based on the longest remaining path of the flow."
                     }
                   },
                   "required": [
@@ -1955,46 +1729,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -2004,46 +1739,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -2060,6 +1756,7 @@
           {
             "in": "path",
             "name": "typebotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
             "schema": {
               "type": "string",
               "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
@@ -2143,6 +1840,15 @@
                         ]
                       }
                     ]
+                  },
+                  "prefilledVariables": {
+                    "type": "object",
+                    "additionalProperties": {},
+                    "description": "[More info about prefilled variables.](../../editor/variables#prefilled-variables)",
+                    "example": {
+                      "First name": "John",
+                      "Email": "john@gmail.com"
+                    }
                   }
                 }
               }
@@ -2436,6 +2142,10 @@
                         }
                       },
                       "description": "If the typebot contains dynamic avatars, dynamicTheme returns the new avatar URLs whenever their variables are updated."
+                    },
+                    "progress": {
+                      "type": "number",
+                      "description": "If progress bar is enabled, this field will return a number between 0 and 100 indicating the current progress based on the longest remaining path of the flow."
                     }
                   },
                   "required": [
@@ -2452,46 +2162,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -2501,46 +2172,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -2618,46 +2250,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -2667,46 +2260,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Not found"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "NOT_FOUND"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "NOT_FOUND",
-                    "message": "Not found",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
                 }
               }
             }
@@ -2716,46 +2270,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -2861,46 +2376,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -2910,46 +2386,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -3004,46 +2441,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -3053,46 +2451,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Authorization not provided"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "UNAUTHORIZED"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "UNAUTHORIZED",
-                    "message": "Authorization not provided",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
                 }
               }
             }
@@ -3102,46 +2461,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Insufficient access"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "FORBIDDEN"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "FORBIDDEN",
-                    "message": "Insufficient access",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
                 }
               }
             }
@@ -3151,46 +2471,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -3260,46 +2541,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -3309,46 +2551,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Authorization not provided"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "UNAUTHORIZED"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "UNAUTHORIZED",
-                    "message": "Authorization not provided",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.UNAUTHORIZED"
                 }
               }
             }
@@ -3358,46 +2561,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Insufficient access"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "FORBIDDEN"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "FORBIDDEN",
-                    "message": "Insufficient access",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.FORBIDDEN"
                 }
               }
             }
@@ -3407,46 +2571,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Not found"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "NOT_FOUND"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "NOT_FOUND",
-                    "message": "Not found",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.NOT_FOUND"
                 }
               }
             }
@@ -3456,46 +2581,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -3927,46 +3013,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -3976,46 +3023,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -4095,46 +3103,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Invalid input data"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "BAD_REQUEST"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "BAD_REQUEST",
-                    "message": "Invalid input data",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.BAD_REQUEST"
                 }
               }
             }
@@ -4144,46 +3113,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string",
-                      "description": "The error message",
-                      "example": "Internal server error"
-                    },
-                    "code": {
-                      "type": "string",
-                      "description": "The error code",
-                      "example": "INTERNAL_SERVER_ERROR"
-                    },
-                    "issues": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "message"
-                        ]
-                      },
-                      "description": "An array of issues that were responsible for the error",
-                      "example": []
-                    }
-                  },
-                  "required": [
-                    "message",
-                    "code"
-                  ],
-                  "title": "Error",
-                  "description": "The error information",
-                  "example": {
-                    "code": "INTERNAL_SERVER_ERROR",
-                    "message": "Internal server error",
-                    "issues": []
-                  }
+                  "$ref": "#/components/schemas/error.INTERNAL_SERVER_ERROR"
                 }
               }
             }
@@ -4624,9 +3554,6 @@
                                 "id"
                               ]
                             }
-                          },
-                          "options": {
-                            "type": "object"
                           }
                         },
                         "required": [
@@ -4693,9 +3620,6 @@
                                   "isExecutedOnClient": {
                                     "type": "boolean"
                                   },
-                                  "type": {
-                                    "type": "string"
-                                  },
                                   "expressionToEvaluate": {
                                     "type": "string"
                                   },
@@ -4716,14 +3640,37 @@
                                   "type": {
                                     "type": "string",
                                     "enum": [
-                                      "Today",
                                       "Now",
                                       "Yesterday",
-                                      "Tomorrow",
+                                      "Tomorrow"
+                                    ]
+                                  },
+                                  "timeZone": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "type"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "variableId": {
+                                    "type": "string"
+                                  },
+                                  "isExecutedOnClient": {
+                                    "type": "boolean"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "Today",
                                       "Moment of the day",
                                       "Empty",
                                       "Environment name",
                                       "User ID",
+                                      "Result ID",
                                       "Random ID",
                                       "Phone number",
                                       "Contact name"
@@ -5419,9 +4366,6 @@
                                   },
                                   "spreadsheetId": {
                                     "type": "string"
-                                  },
-                                  "action": {
-                                    "type": "string"
                                   }
                                 }
                               }
@@ -5607,9 +4551,6 @@
                               {
                                 "type": "object",
                                 "properties": {
-                                  "task": {
-                                    "type": "string"
-                                  },
                                   "credentialsId": {
                                     "type": "string"
                                   },
@@ -6122,7 +5063,8 @@
                             "type": "string",
                             "enum": [
                               "Webhook"
-                            ]
+                            ],
+                            "description": "Legacy name for HTTP Request block"
                           },
                           "options": {
                             "type": "object",
@@ -6460,9 +5402,6 @@
                                         "id"
                                       ]
                                     }
-                                  },
-                                  "eventType": {
-                                    "type": "string"
                                   }
                                 }
                               },
@@ -7335,6 +6274,14 @@
               "length": {
                 "type": "number"
               },
+              "startsAt": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {}
+                ]
+              },
               "labels": {
                 "type": "object",
                 "properties": {
@@ -7413,11 +6360,30 @@
                   },
                   "skip": {
                     "type": "string"
+                  },
+                  "success": {
+                    "type": "object",
+                    "properties": {
+                      "single": {
+                        "type": "string"
+                      },
+                      "multiple": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
               },
               "sizeLimit": {
                 "type": "number"
+              },
+              "visibility": {
+                "type": "string",
+                "enum": [
+                  "Auto",
+                  "Public",
+                  "Private"
+                ]
               }
             }
           }
@@ -7750,7 +6716,56 @@
             "type": "object",
             "properties": {
               "font": {
-                "type": "string"
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "Google"
+                            ]
+                          },
+                          "family": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "Custom"
+                            ]
+                          },
+                          "family": {
+                            "type": "string"
+                          },
+                          "css": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string",
+                            "description": "Deprecated, use `css` instead"
+                          }
+                        },
+                        "required": [
+                          "type"
+                        ]
+                      }
+                    ]
+                  }
+                ]
               },
               "background": {
                 "type": "object",
@@ -7765,6 +6780,37 @@
                   },
                   "content": {
                     "type": "string"
+                  }
+                }
+              },
+              "progressBar": {
+                "type": "object",
+                "properties": {
+                  "isEnabled": {
+                    "type": "boolean"
+                  },
+                  "color": {
+                    "type": "string"
+                  },
+                  "backgroundColor": {
+                    "type": "string"
+                  },
+                  "placement": {
+                    "type": "string",
+                    "enum": [
+                      "Top",
+                      "Bottom"
+                    ]
+                  },
+                  "thickness": {
+                    "type": "number"
+                  },
+                  "position": {
+                    "type": "string",
+                    "enum": [
+                      "fixed",
+                      "absolute"
+                    ]
                   }
                 }
               }
@@ -8394,9 +7440,6 @@
                         "id"
                       ]
                     }
-                  },
-                  "options": {
-                    "type": "object"
                   }
                 },
                 "required": [
@@ -8463,9 +7506,6 @@
                           "isExecutedOnClient": {
                             "type": "boolean"
                           },
-                          "type": {
-                            "type": "string"
-                          },
                           "expressionToEvaluate": {
                             "type": "string"
                           },
@@ -8486,14 +7526,37 @@
                           "type": {
                             "type": "string",
                             "enum": [
-                              "Today",
                               "Now",
                               "Yesterday",
-                              "Tomorrow",
+                              "Tomorrow"
+                            ]
+                          },
+                          "timeZone": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "type"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "variableId": {
+                            "type": "string"
+                          },
+                          "isExecutedOnClient": {
+                            "type": "boolean"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "Today",
                               "Moment of the day",
                               "Empty",
                               "Environment name",
                               "User ID",
+                              "Result ID",
                               "Random ID",
                               "Phone number",
                               "Contact name"
@@ -9149,9 +8212,6 @@
                           },
                           "spreadsheetId": {
                             "type": "string"
-                          },
-                          "action": {
-                            "type": "string"
                           }
                         }
                       }
@@ -9328,9 +8388,6 @@
                       {
                         "type": "object",
                         "properties": {
-                          "task": {
-                            "type": "string"
-                          },
                           "credentialsId": {
                             "type": "string"
                           },
@@ -9834,7 +8891,8 @@
                     "type": "string",
                     "enum": [
                       "Webhook"
-                    ]
+                    ],
+                    "description": "Legacy name for HTTP Request block"
                   },
                   "options": {
                     "type": "object",
@@ -10154,9 +9212,6 @@
                                 "id"
                               ]
                             }
-                          },
-                          "eventType": {
-                            "type": "string"
                           }
                         }
                       },
@@ -10355,7 +9410,11 @@
                   "chat-node",
                   "qr-code",
                   "dify-ai",
-                  "mistral"
+                  "mistral",
+                  "elevenlabs",
+                  "anthropic",
+                  "together-ai",
+                  "open-router"
                 ]
               },
               "options": {}
@@ -10532,8 +9591,27 @@
                   },
                   "skip": {
                     "type": "string"
+                  },
+                  "success": {
+                    "type": "object",
+                    "properties": {
+                      "single": {
+                        "type": "string"
+                      },
+                      "multiple": {
+                        "type": "string"
+                      }
+                    }
                   }
                 }
+              },
+              "visibility": {
+                "type": "string",
+                "enum": [
+                  "Auto",
+                  "Public",
+                  "Private"
+                ]
               }
             }
           }
@@ -10908,6 +9986,9 @@
           "content": {
             "type": "object",
             "properties": {
+              "maxBubbleWidth": {
+                "type": "number"
+              },
               "waitForEventFunction": {
                 "type": "object",
                 "properties": {
@@ -11497,9 +10578,6 @@
                         "id"
                       ]
                     }
-                  },
-                  "eventType": {
-                    "type": "string"
                   }
                 }
               },
@@ -11678,6 +10756,216 @@
           "codeToExecute"
         ],
         "title": "Execute code"
+      },
+      "error.BAD_REQUEST": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The error message",
+            "example": "Invalid input data"
+          },
+          "code": {
+            "type": "string",
+            "description": "The error code",
+            "example": "BAD_REQUEST"
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            },
+            "description": "An array of issues that were responsible for the error",
+            "example": []
+          }
+        },
+        "required": [
+          "message",
+          "code"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "code": "BAD_REQUEST",
+          "message": "Invalid input data",
+          "issues": []
+        }
+      },
+      "error.INTERNAL_SERVER_ERROR": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The error message",
+            "example": "Internal server error"
+          },
+          "code": {
+            "type": "string",
+            "description": "The error code",
+            "example": "INTERNAL_SERVER_ERROR"
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            },
+            "description": "An array of issues that were responsible for the error",
+            "example": []
+          }
+        },
+        "required": [
+          "message",
+          "code"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "code": "INTERNAL_SERVER_ERROR",
+          "message": "Internal server error",
+          "issues": []
+        }
+      },
+      "error.NOT_FOUND": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The error message",
+            "example": "Not found"
+          },
+          "code": {
+            "type": "string",
+            "description": "The error code",
+            "example": "NOT_FOUND"
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            },
+            "description": "An array of issues that were responsible for the error",
+            "example": []
+          }
+        },
+        "required": [
+          "message",
+          "code"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "code": "NOT_FOUND",
+          "message": "Not found",
+          "issues": []
+        }
+      },
+      "error.UNAUTHORIZED": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The error message",
+            "example": "Authorization not provided"
+          },
+          "code": {
+            "type": "string",
+            "description": "The error code",
+            "example": "UNAUTHORIZED"
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            },
+            "description": "An array of issues that were responsible for the error",
+            "example": []
+          }
+        },
+        "required": [
+          "message",
+          "code"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "code": "UNAUTHORIZED",
+          "message": "Authorization not provided",
+          "issues": []
+        }
+      },
+      "error.FORBIDDEN": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The error message",
+            "example": "Insufficient access"
+          },
+          "code": {
+            "type": "string",
+            "description": "The error code",
+            "example": "FORBIDDEN"
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            },
+            "description": "An array of issues that were responsible for the error",
+            "example": []
+          }
+        },
+        "required": [
+          "message",
+          "code"
+        ],
+        "title": "Error",
+        "description": "The error information",
+        "example": {
+          "code": "FORBIDDEN",
+          "message": "Insufficient access",
+          "issues": []
+        }
       }
     }
   }

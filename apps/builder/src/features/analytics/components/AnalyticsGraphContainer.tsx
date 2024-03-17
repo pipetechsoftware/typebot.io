@@ -15,14 +15,29 @@ import { useTranslate } from '@tolgee/react'
 import { trpc } from '@/lib/trpc'
 import { isDefined } from '@typebot.io/lib'
 import { EventsCoordinatesProvider } from '@/features/graph/providers/EventsCoordinateProvider'
+import { timeFilterValues } from '../constants'
 
-export const AnalyticsGraphContainer = ({ stats }: { stats?: Stats }) => {
+const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+type Props = {
+  timeFilter: (typeof timeFilterValues)[number]
+  onTimeFilterChange: (timeFilter: (typeof timeFilterValues)[number]) => void
+  stats?: Stats
+}
+
+export const AnalyticsGraphContainer = ({
+  timeFilter,
+  onTimeFilterChange,
+  stats,
+}: Props) => {
   const { t } = useTranslate()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { typebot, publishedTypebot } = useTypebot()
   const { data } = trpc.analytics.getTotalAnswers.useQuery(
     {
       typebotId: typebot?.id as string,
+      timeFilter,
+      timeZone,
     },
     { enabled: isDefined(publishedTypebot) }
   )
@@ -30,6 +45,8 @@ export const AnalyticsGraphContainer = ({ stats }: { stats?: Stats }) => {
   const { data: edgesData } = trpc.analytics.getTotalVisitedEdges.useQuery(
     {
       typebotId: typebot?.id as string,
+      timeFilter,
+      timeZone,
     },
     { enabled: isDefined(publishedTypebot) }
   )
@@ -76,7 +93,12 @@ export const AnalyticsGraphContainer = ({ stats }: { stats?: Stats }) => {
         type={t('billing.limitMessage.analytics')}
         excludedPlans={['STARTER']}
       />
-      <StatsCards stats={stats} pos="absolute" />
+      <StatsCards
+        stats={stats}
+        pos="absolute"
+        timeFilter={timeFilter}
+        onTimeFilterChange={onTimeFilterChange}
+      />
     </Flex>
   )
 }
