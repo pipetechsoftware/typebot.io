@@ -45,6 +45,11 @@ export const FileInputSettings = ({ options, onOptionsChange }: Props) => {
         onCheckChange={handleRequiredChange}
       />
       <SwitchWithLabel
+        label="Omni?"
+        initialValue={options?.isOmni ?? defaultFileInputOptions.isOmni}
+        onCheckChange={(isOmni: boolean) => onOptionsChange({ ...options, isOmni })}
+      />
+      <SwitchWithLabel
         label={t('blocks.inputs.file.settings.allowMultiple.label')}
         initialValue={
           options?.isMultipleAllowed ??

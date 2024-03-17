@@ -445,6 +445,11 @@ const parseReply =
           return block.options?.isRequired ?? defaultFileInputOptions.isRequired
             ? { status: 'fail' }
             : { status: 'skip' }
+
+        if (block.options?.isOmni ?? defaultFileInputOptions.isOmni) {
+          return { status: 'success', reply: inputValue }
+        }
+
         const urls = inputValue.split(', ')
         const status = urls.some((url) => validateUrl(url)) ? 'success' : 'fail'
         return { status, reply: inputValue }

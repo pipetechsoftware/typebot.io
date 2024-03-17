@@ -5,6 +5,7 @@ import { InputBlockType } from '../constants'
 const fileInputOptionsV5Schema = optionBaseSchema.merge(
   z.object({
     isRequired: z.boolean().optional(),
+    isOmni: z.boolean().optional(),
     isMultipleAllowed: z.boolean().optional(),
     labels: z
       .object({

@@ -3,6 +3,7 @@ import { FileInputBlock } from './schema'
 export const defaultFileInputOptions = {
   isRequired: true,
   isMultipleAllowed: false,
+  isOmni: false,
   labels: {
     placeholder: `<strong>
       Click to upload
