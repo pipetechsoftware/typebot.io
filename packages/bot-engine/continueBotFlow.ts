@@ -481,7 +481,7 @@ const parseReply =
             : { status: 'skip' }
 
         if (block.options?.isOmni ?? defaultFileInputOptions.isOmni) {
-          return { status: 'success', reply: inputValue }
+          return { status: 'success', reply }
         }
 
         const urls = reply.split(', ')
